@@ -27,6 +27,13 @@ module.exports = (sequelize, DataTypes) => {
       types: {
         type: DataTypes.STRING,
         allowNull: false,
+        // Getter - Setter https://www.youtube.com/watch?v=NRxzvpdduvQ&t=11530s
+        get() {
+          return this.getDataValue("types").split(",");
+        },
+        set(types) {
+          this.setDataValue("types", types.join());
+        },
       },
     },
     {
