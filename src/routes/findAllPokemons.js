@@ -1,11 +1,12 @@
 const { Pokemon } = require("../db/sequelize");
 const { Op } = require("sequelize");
+const auth = require("../auth/auth");
 // https://www.youtube.com/watch?v=NRxzvpdduvQ&t=19291s
 
 const capitalize = (str) => str.charAt(0).toUpperCase() + str.substring(1);
 
 module.exports = (app) => {
-  app.get("/api/pokemons", (req, res) => {
+  app.get("/api/pokemons", auth, (req, res) => {
     // Permet de récupérer des données par ?=name
     if (req.query.name) {
       const name = req.query.name;
