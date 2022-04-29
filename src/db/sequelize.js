@@ -5,12 +5,12 @@ const pokemons = require("./mock-pokemon");
 const bcrypt = require("bcrypt");
 
 const sequelize = new Sequelize("pokedex", "root", "", {
-  host: "localhost",
+  host: process.env.PORT,
   dialect: "mariadb",
   dialectOptions: {
     timezone: "Etc/GMT-2",
   },
-  logging: false,
+  logging: true,
 });
 
 const Pokemon = PokemonModel(sequelize, DataTypes);
