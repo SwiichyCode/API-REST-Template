@@ -10,6 +10,10 @@ app.use(favicon(__dirname + "/favicon.ico")).use(bodyParser.json());
 
 sequelize.initDb();
 
+app.get("/", (req, res) => {
+  res.json("Hello World");
+});
+
 // Ici, nous placerons nos futurs points de terminaison.
 require("./src/routes/findAllPokemons")(app);
 require("./src/routes/findPokemonByPk")(app);
